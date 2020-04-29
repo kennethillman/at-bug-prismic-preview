@@ -8,11 +8,13 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "k": "nuxt generate && nuxt"
   },
   "dependencies": {
-    "@nuxtjs/prismic": "^1.1.1",
-    "nuxt": "^2.0.0"
+    "@nuxtjs/prismic": "^1.2",
+    "nuxt": "^2.12.2",
+    "prismic-vue": "^2.0.1"
   },
   "devDependencies": {}
 }

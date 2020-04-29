@@ -87,6 +87,7 @@ export default {
     sliceImage
   },
   async asyncData ({ params, $prismic }) {
+    console.log('- - - - - - - - - - - - - - -  async asyncData - TEST/UID ')
     const testuid = await $prismic.api.getByUID('test', params.uid)
     const slices = testuid.data.body
     return { testuid, slices}
@@ -108,7 +109,6 @@ img {
   width: 80%;
   min-width: 300px;
   text-align: center;
-
 }
 
 .title {

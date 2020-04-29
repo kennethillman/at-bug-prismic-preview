@@ -3,7 +3,7 @@
 
 
       <h1 class="title">
-        pages/test/index.vue
+        pages/new.vue
       </h1>
       <br><br>
       <div class="flex">
@@ -15,8 +15,8 @@
         <h4 class="label">async asyncData()</h4>
 
         <section class="text">
-          <prismic-rich-text :field="home.data.header" /><br><br>
-          <prismic-rich-text :field="home.data.text" /><br><br>
+          <prismic-rich-text :field="startAsync.data.header" /><br><br>
+          <prismic-rich-text :field="startAsync.data.text" /><br><br>
         </section>
 
         <section class="images">
@@ -24,18 +24,18 @@
           Multiple image views PICTURE TAG <br><br>
 
           <picture>
-            <source media="(min-width: 769px)" :srcset="home.data.image.desktop.ur">
-            <source media="(min-width: 479px)" :srcset="home.data.image.tablet.url">
-            <img :src="home.data.image.url" :alt="home.data.image.alt">
+            <source media="(min-width: 769px)" :srcset="startAsync.data.image.desktop.ur">
+            <source media="(min-width: 479px)" :srcset="startAsync.data.image.tablet.url">
+            <img :src="startAsync.data.image.url" :alt="startAsync.data.image.alt">
           </picture><br><br>
 
           Multiple image views PRISMIC-IMAGE TAG <br><br>
 
-          <prismic-image :field="home.data.image" /><br><br>
+          <prismic-image :field="startAsync.data.image" /><br><br>
 
           Singel view PRISMIC-IMAGE TAG <br><br>
 
-          <prismic-image :field="home.data.image_singel" /> <br><br>
+          <prismic-image :field="startAsync.data.image_singel" /> <br><br>
         </section>
 
         <!-- SLICES loop inlined -->
@@ -44,7 +44,7 @@
           <br><br>
           <h2>As slice [page inlined]</h2>
 
-          <div v-for="(slice, index) in home.data.body" :key="'slice-' + index">
+          <div v-for="(slice, index) in startAsync.data.body" :key="'slice-' + index">
             <template v-if="slice.slice_type === 'image'">
               <slice-image :sliceRaw="slice"/>
             </template>
@@ -55,7 +55,7 @@
 
         <section class="slices component">
           <h2>As slice [components/slices.vue]</h2>
-          <site-slices :slicesRaw="home.data.body"/>
+          <site-slices :slicesRaw="startAsync.data.body"/>
         </section>
 
       </div>
@@ -67,8 +67,8 @@
         <h4 class="label">computed: - VUEX</h4>
 
         <section class="text">
-          <prismic-rich-text :field="testHome.header" /><br><br>
-          <prismic-rich-text :field="testHome.text" /><br><br>
+          <prismic-rich-text :field="testStart.header" /><br><br>
+          <prismic-rich-text :field="testStart.text" /><br><br>
         </section>
 
         <section class="images">
@@ -76,18 +76,18 @@
           Multiple image views PICTURE TAG <br><br>
 
           <picture>
-            <source media="(min-width: 769px)" :srcset="testHome.image.desktop.ur">
-            <source media="(min-width: 479px)" :srcset="testHome.image.tablet.url">
-            <img :src="testHome.image.url" :alt="testHome.image.alt">
+            <source media="(min-width: 769px)" :srcset="testStart.image.desktop.ur">
+            <source media="(min-width: 479px)" :srcset="testStart.image.tablet.url">
+            <img :src="testStart.image.url" :alt="testStart.image.alt">
           </picture><br><br>
 
           Multiple image views PRISMIC-IMAGE TAG <br><br>
 
-          <prismic-image :field="testHome.image" /><br><br>
+          <prismic-image :field="testStart.image" /><br><br>
 
           Singel view PRISMIC-IMAGE TAG <br><br>
 
-          <prismic-image :field="testHome.image_singel" /> <br><br>
+          <prismic-image :field="testStart.image_singel" /> <br><br>
         </section>
 
         <!-- SLICES loop inlined -->
@@ -96,7 +96,7 @@
           <br><br>
           <h2>As slice [page inlined]</h2>
 
-          <div v-for="(slice, index) in testHome.body" :key="'slice-' + index">
+          <div v-for="(slice, index) in testStart.body" :key="'slice-' + index">
             <template v-if="slice.slice_type === 'image'">
               <slice-image :sliceRaw="slice"/>
             </template>
@@ -107,7 +107,7 @@
 
         <section class="slices component">
           <h2>As slice [components/slices.vue]</h2>
-          <site-slices :slicesRaw="testHome.body"/>
+          <site-slices :slicesRaw="testStart.body"/>
         </section>
 
       </div>
@@ -186,15 +186,15 @@ export default {
   },
   data() {
     return {
-      testGet: this.$store.getters.getTestHome
+      testGet: this.$store.getters.getTestStart
     }
   },
-  computed: mapState(['testHome']),
+  computed: mapState(['testStart']),
   async asyncData ({ $prismic }) {
-    console.log('- - - - - - - - - - - - - - -  async asyncData - TESTHOME')
-    const home = await $prismic.api.getSingle('testhome')
+    console.log('- - - - - - - - - - - - - - -  async asyncData - STARTPAGE ')
+    const startAsync = await $prismic.api.getSingle('startpage')
     // const slices = start.data.body
-    return { home }
+    return { startAsync }
   }
 }
 </script>
